@@ -1,0 +1,27 @@
+# Python
+*.pyc
+*.pyo
+*.egg-info/
+__pycache__/
+.venv/
+venv/
+env/
+*.swp
+*~
+*.bak
+*.tmp
+*.DS_Store
+
+# macOS
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+
+# General ignore
+tmp/
+temp/
+build/
+dist/
+logs/
+*.log 

@@ -1,0 +1,24 @@
+[project]
+name = "zv"
+version = "0.1.0"
+description = "static blog generator"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "markdown>=3.8.2",
+    "typer>=0.16.0",
+    "ruff>=0.12.2",
+    "jinja2>=3.1.6",
+    "pyyaml>=6.0.2",
+    "rich>=13.7.1",
+    "pydantic>=2.11.7",
+    "beautifulsoup4>=4.13.4",
+    "lxml>=6.0.0",
+]
+
+[project.scripts]
+zv = "zv.cli:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
