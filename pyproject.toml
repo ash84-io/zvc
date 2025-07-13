@@ -1,6 +1,6 @@
 [project]
 name = "zvc"
-version = "0.1.1"
+version = "0.1.2"
 description = "static blog generator"
 readme = "README.md"
 requires-python = ">=3.12"
