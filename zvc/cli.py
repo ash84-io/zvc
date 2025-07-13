@@ -269,23 +269,23 @@ def get_date_path_from_frontmatter(frontmatter):
 def init():
     """Initialize the blog structure with required directories and config file."""
     console.print("[bold blue]Initializing blog structure...[/bold blue]")
-    
+
     # Create contents directory
     os.makedirs("contents", exist_ok=True)
     console.print("[green]Created directory:[/green] contents")
-    
+
     # Create themes directory
     os.makedirs("themes", exist_ok=True)
     console.print("[green]Created directory:[/green] themes")
-    
+
     # Create themes/default directory
     os.makedirs(os.path.join("themes", "default"), exist_ok=True)
     console.print("[green]Created directory:[/green] themes/default")
-    
+
     # Create themes/default/assets directory
     os.makedirs(os.path.join("themes", "default", "assets"), exist_ok=True)
     console.print("[green]Created directory:[/green] themes/default/assets")
-    
+
     # Create config.yaml file
     config_content = """theme: 
   name: default
@@ -295,11 +295,11 @@ blog:
 publication:
   path: ./docs
 """
-    
+
     with open("config.yaml", "w", encoding="utf-8") as config_file:
         config_file.write(config_content)
     console.print("[green]Created file:[/green] config.yaml")
-    
+
     # Create basic template files
     index_template = """<!DOCTYPE html>
 <html>
@@ -331,7 +331,7 @@ publication:
 </body>
 </html>
 """
-    
+
     post_template = """<!DOCTYPE html>
 <html>
 <head>
@@ -364,7 +364,7 @@ publication:
 </body>
 </html>
 """
-    
+
     css_content = """body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
@@ -427,28 +427,36 @@ footer {
     color: #666;
 }
 """
-    
+
     # Create template files
-    with open(os.path.join("themes", "default", "index.html"), "w", encoding="utf-8") as f:
+    with open(
+        os.path.join("themes", "default", "index.html"), "w", encoding="utf-8"
+    ) as f:
         f.write(index_template)
     console.print("[green]Created file:[/green] themes/default/index.html")
-    
-    with open(os.path.join("themes", "default", "post.html"), "w", encoding="utf-8") as f:
+
+    with open(
+        os.path.join("themes", "default", "post.html"), "w", encoding="utf-8"
+    ) as f:
         f.write(post_template)
     console.print("[green]Created file:[/green] themes/default/post.html")
-    
+
     # Create CSS file
     os.makedirs(os.path.join("themes", "default", "assets"), exist_ok=True)
-    with open(os.path.join("themes", "default", "assets", "style.css"), "w", encoding="utf-8") as f:
+    with open(
+        os.path.join("themes", "default", "assets", "style.css"), "w", encoding="utf-8"
+    ) as f:
         f.write(css_content)
     console.print("[green]Created file:[/green] themes/default/assets/style.css")
-    
+
     # Create docs directory
     os.makedirs("docs", exist_ok=True)
     console.print("[green]Created directory:[/green] docs")
-    
+
     console.print("[bold green]Initialization complete![/bold green]")
-    console.print("\nTo create your first post, add a markdown file to the 'contents' directory.")
+    console.print(
+        "\nTo create your first post, add a markdown file to the 'contents' directory."
+    )
     console.print("Then run 'zvc build' to generate your site.")
 
 

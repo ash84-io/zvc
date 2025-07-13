@@ -1,5 +1,5 @@
 [project]
-name = "zv"
+name = "zvc"
 version = "0.1.0"
 description = "static blog generator"
 readme = "README.md"
@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.scripts]
-zv = "zv.cli:main"
+zvv = "zvc.cli:main"
 
 [build-system]
 requires = ["setuptools>=61.0"]

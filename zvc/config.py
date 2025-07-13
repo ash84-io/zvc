@@ -40,7 +40,6 @@ class Config(BaseModel):
 
     @classmethod
     def load(cls, d: dict):
-        print(d)
         return Config(
             theme=ThemeConfig.load(d["theme"]),
             blog=BlogConfig.load(d["blog"]),
