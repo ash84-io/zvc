@@ -3,7 +3,7 @@
 
 
 [![Lint](https://github.com/ash84-io/zvc/actions/workflows/lint.yml/badge.svg)](https://github.com/ash84-io/zvc/actions/workflows/lint.yml)
-[![Version](https://img.shields.io/badge/version-0.2.1-blue.svg)](https://github.com/ash84/zvc)
+[![Version](https://img.shields.io/badge/version-0.1.2-blue.svg)](https://github.com/ash84/zvc)
 
 ---
 
@@ -28,9 +28,8 @@ pip3 install zvc
 ╭─ Commands ───────────────────────────────────────────────────────────────────╮
 │ init    Initialize the blog structure with required directories and config   │
 │         file.                                                                │
-│ clean                                                                        │
+│ clean   Clean the generated files                                            │
 │ build   Build the static site.                                               │
-│ dev     Build the site and start a development server.                       │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
 
@@ -66,3 +65,11 @@ Theme assets copied to: ./docs/assets
 Created index.html: docs/index.html
 Build complete!
 ```
+
+# run 
+
+```shell 
+> python -m http.server 8000  --directory ./docs 
+```
+
+[!example][https://github.com/ash84-io/zvc/raw/main/example.png]
