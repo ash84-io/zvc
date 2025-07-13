@@ -22,3 +22,10 @@ zvv = "zvc.cli:main"
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+    "pytest-sugar>=1.0.0",
+    "ruff>=0.12.2",
+]

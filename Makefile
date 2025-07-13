@@ -2,9 +2,9 @@
 
 .PHONY: install format lint
 
-# Install zv package globally
+# Install zvc package globally
 install:
-	pipx install -e --force .
+	pip install -e .
 
 format: 
 	ruff format .
