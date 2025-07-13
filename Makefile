@@ -1,10 +1,13 @@
 # Makefile for ash84.io static site
 
-.PHONY: install format lint build publish
+.PHONY: install install-dev format lint build publish
 
 # Install zvc package globally
 install:
 	pip3 install .
+
+install-dev:
+	pip3 install -e .
 
 format: 
 	ruff format .
