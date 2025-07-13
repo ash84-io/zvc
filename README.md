@@ -1,9 +1,9 @@
 
-![logo](logo.png)
+![logo](https://github.com/ash84-io/zvc/raw/main/logo.png)
 
 
 [![Lint](https://github.com/ash84-io/zvc/actions/workflows/lint.yml/badge.svg)](https://github.com/ash84-io/zvc/actions/workflows/lint.yml)
-[![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)](https://github.com/ash84/zvc)
+[![Version](https://img.shields.io/badge/version-0.2.1-blue.svg)](https://github.com/ash84/zvc)
 
 ---
 
@@ -51,4 +51,18 @@ Created file: themes/default/post.html
 Created file: themes/default/assets/style.css
 Created directory: docs
 Initialization complete!
+```
+
+
+# build 
+
+```shell 
+> zvc build 
+Building static site...
+Cleared directory: docs
+Copying theme assets from: themes/default/assets
+Theme assets copied to: ./docs/assets
+  Converting markdown files... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100%
+Created index.html: docs/index.html
+Build complete!
 ```
