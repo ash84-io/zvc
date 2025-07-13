@@ -270,184 +270,28 @@ def init():
     """Initialize the blog structure with required directories and config file."""
     console.print("[bold blue]Initializing blog structure...[/bold blue]")
 
-    # Create contents directory
-    os.makedirs("contents", exist_ok=True)
-    console.print("[green]Created directory:[/green] contents")
+    # Get the path to the initdir directory
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    initdir_path = os.path.join(current_dir, "initdir")
 
-    # Create themes directory
-    os.makedirs("themes", exist_ok=True)
-    console.print("[green]Created directory:[/green] themes")
-
-    # Create themes/default directory
-    os.makedirs(os.path.join("themes", "default"), exist_ok=True)
-    console.print("[green]Created directory:[/green] themes/default")
-
-    # Create themes/default/assets directory
-    os.makedirs(os.path.join("themes", "default", "assets"), exist_ok=True)
-    console.print("[green]Created directory:[/green] themes/default/assets")
-
-    # Create config.yaml file
-    config_content = """theme: 
-  name: default
-blog: 
-  title: blog_title
-  description: blog_description
-publication:
-  path: ./docs
-"""
-
-    with open("config.yaml", "w", encoding="utf-8") as config_file:
-        config_file.write(config_content)
+    # Copy config.yaml
+    shutil.copy(
+        os.path.join(initdir_path, "config.yaml"),
+        "config.yaml"
+    )
     console.print("[green]Created file:[/green] config.yaml")
 
-    # Create basic template files
-    index_template = """<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ settings.blog_title }}</title>
-    <link rel="stylesheet" href="/assets/style.css">
-</head>
-<body>
-    <header>
-        <h1>{{ settings.blog_title }}</h1>
-        <p>{{ settings.blog_desc }}</p>
-    </header>
-    <main>
-        <div class="posts">
-            {% for post in post_list %}
-            <article class="post-item">
-                <h2><a href="{{ post.link }}">{{ post.title }}</a></h2>
-                <div class="post-meta">{{ post.pub_date }}</div>
-                <div class="post-description">{{ post.description }}</div>
-            </article>
-            {% endfor %}
-        </div>
-    </main>
-    <footer>
-        <p>&copy; {% now 'Y' %}</p>
-    </footer>
-</body>
-</html>
-"""
+    # Copy contents directory
+    contents_src = os.path.join(initdir_path, "contents")
+    if os.path.exists(contents_src):
+        shutil.copytree(contents_src, "contents", dirs_exist_ok=True)
+        console.print("[green]Created directory:[/green] contents")
 
-    post_template = """<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ post.title }}</title>
-    <link rel="stylesheet" href="/assets/style.css">
-</head>
-<body>
-    <header>
-        <h1>{{ post.title }}</h1>
-        <div class="post-meta">{{ post.created_at }}</div>
-        {% if tag_list %}
-        <div class="tags">
-            {% for tag in tag_list %}
-            <span class="tag">{{ tag }}</span>
-            {% endfor %}
-        </div>
-        {% endif %}
-    </header>
-    <main>
-        <article class="post-content">
-            {{ post.html|safe }}
-        </article>
-    </main>
-    <footer>
-        <p><a href="/">Back to Home</a></p>
-        <p>&copy; {% now 'Y' %}</p>
-    </footer>
-</body>
-</html>
-"""
-
-    css_content = """body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-header {
-    margin-bottom: 40px;
-}
-
-h1 {
-    margin-bottom: 10px;
-}
-
-a {
-    color: #0066cc;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.post-item {
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.post-meta {
-    color: #666;
-    font-size: 0.9em;
-    margin-bottom: 10px;
-}
-
-.post-description {
-    margin-top: 10px;
-}
-
-.tags {
-    margin-top: 10px;
-}
-
-.tag {
-    background-color: #f0f0f0;
-    padding: 3px 8px;
-    border-radius: 3px;
-    font-size: 0.8em;
-    margin-right: 5px;
-}
-
-footer {
-    margin-top: 50px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-    font-size: 0.9em;
-    color: #666;
-}
-"""
-
-    # Create template files
-    with open(
-        os.path.join("themes", "default", "index.html"), "w", encoding="utf-8"
-    ) as f:
-        f.write(index_template)
-    console.print("[green]Created file:[/green] themes/default/index.html")
-
-    with open(
-        os.path.join("themes", "default", "post.html"), "w", encoding="utf-8"
-    ) as f:
-        f.write(post_template)
-    console.print("[green]Created file:[/green] themes/default/post.html")
-
-    # Create CSS file
-    os.makedirs(os.path.join("themes", "default", "assets"), exist_ok=True)
-    with open(
-        os.path.join("themes", "default", "assets", "style.css"), "w", encoding="utf-8"
-    ) as f:
-        f.write(css_content)
-    console.print("[green]Created file:[/green] themes/default/assets/style.css")
+    # Copy themes directory
+    themes_src = os.path.join(initdir_path, "themes")
+    if os.path.exists(themes_src):
+        shutil.copytree(themes_src, "themes", dirs_exist_ok=True)
+        console.print("[green]Created directory:[/green] themes")
 
     # Create docs directory
     os.makedirs("docs", exist_ok=True)
@@ -550,17 +394,6 @@ def build():
     create_index_html(post_list=post_list, config=config)
 
     console.print("[bold green]Build complete![/bold green]")
-
-
-@app.command()
-def dev():
-    """Build the site and start a development server."""
-    # Build the site first
-    build()
-
-    # Start development server
-    console.print("[bold blue]Starting development server...[/bold blue]")
-    console.print("[green]Server running at:[/green] http://localhost:8000")
 
 
 def main():

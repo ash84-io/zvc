@@ -1,0 +1,7 @@
+theme: 
+  name: default
+blog: 
+  title: blog_title
+  description: blog_description
+publication:
+  path: ./docs

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <header>
+        <h1>{{ post.title }}</h1>
+        <div class="post-meta">{{ post.created_at }}</div>
+        {% if tag_list %}
+        <div class="tags">
+            {% for tag in tag_list %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </header>
+    <main>
+        <article class="post-content">
+            {{ post.html|safe }}
+        </article>
+    </main> 
+</body>
+</html>

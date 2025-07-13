@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ settings.blog_title }}</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <header>
+        <h1>{{ settings.blog_title }}</h1>
+        <p>{{ settings.blog_desc }}</p>
+    </header>
+    <main>
+        <div class="posts">
+            {% for post in post_list %}
+            <article class="post-item">
+                <h2><a href="{{ post.link }}">{{ post.title }}</a></h2>
+                <div class="post-meta">{{ post.pub_date }}</div>
+                <div class="post-description">{{ post.description }}</div>
+            </article>
+            {% endfor %}
+        </div>
+    </main> 
+</body>
+</html>
