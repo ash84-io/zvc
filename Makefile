@@ -4,7 +4,7 @@
 
 # Install zv package globally
 install:
-	pipx install -e .
+	pipx install -e --force .
 
 format: 
 	ruff format .
