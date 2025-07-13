@@ -15,6 +15,7 @@ lint:
 
 # Build package for PyPI
 build:
+	rm -rf dist
 	python -m build
 
 # Publish to PyPI
