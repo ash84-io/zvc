@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Setup script for zv package."""
+"""Setup script for zvc package."""
 
 from setuptools import setup
 

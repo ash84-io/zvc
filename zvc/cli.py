@@ -462,6 +462,7 @@ footer {
 
 @app.command()
 def clean():
+    """Clean the generated files"""
     config: Config = read_config()
     console.print("[bold blue]Cleaning generated files...[/bold blue]")
     clear_directory(config.publication.path)
