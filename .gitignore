@@ -1,27 +1,32 @@
-# Python
-*.pyc
-*.pyo
-*.egg-info/
 __pycache__/
-.venv/
-venv/
-env/
-*.swp
-*~
-*.bak
-*.tmp
-*.DS_Store
-
-# macOS
-.DS_Store
-._*
-.AppleDouble
-.LSOverride
-
-# General ignore
-tmp/
-temp/
+*.py[cod]
+*$py.class
+*.so
+.Python
 build/
+develop-eggs/
 dist/
-logs/
-*.log 
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+.venv
+.DS_Store
+
+# Local test environment
+config.yaml
+contents/
+themes/
+docs/ 
