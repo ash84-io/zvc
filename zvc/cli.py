@@ -222,6 +222,27 @@ def copy_theme_assets(config: Config):
         console.print(f"[yellow]No theme assets found at:[/yellow] {theme_assets_dir}")
 
 
+def copy_content_assets(source_dir, target_dir):
+    """Copy all non-markdown files from source directory to target directory."""
+    if not os.path.exists(source_dir):
+        return
+
+    # Create target directory if it doesn't exist
+    os.makedirs(target_dir, exist_ok=True)
+
+    # Get all files in the source directory
+    for item in os.listdir(source_dir):
+        source_item = os.path.join(source_dir, item)
+        target_item = os.path.join(target_dir, item)
+
+        # Skip markdown files
+        if os.path.isfile(source_item) and not item.endswith(".md"):
+            shutil.copy2(source_item, target_item)
+            console.print(
+                f"[green]Copied asset:[/green] {source_item} -> {target_item}"
+            )
+
+
 def get_all_markdown_files():
     """Get all markdown files in the contents directory."""
     md_files = []
@@ -275,10 +296,7 @@ def init():
     initdir_path = os.path.join(current_dir, "initdir")
 
     # Copy config.yaml
-    shutil.copy(
-        os.path.join(initdir_path, "config.yaml"),
-        "config.yaml"
-    )
+    shutil.copy(os.path.join(initdir_path, "config.yaml"), "config.yaml")
     console.print("[green]Created file:[/green] config.yaml")
 
     # Copy contents directory
@@ -372,6 +390,10 @@ def build():
             convert_markdown_to_html(
                 config=config, md_path=md_file, html_path=html_path
             )
+
+            # Copy other files from the content directory to the output directory
+            content_dir = os.path.dirname(md_file)
+            copy_content_assets(content_dir, html_dir)
 
             # Add to post list with the new URL format
             post_url = f"/{year}/{month}/{day}/{slug}/"
