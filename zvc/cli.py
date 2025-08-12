@@ -367,11 +367,16 @@ def build():
             with open(md_file, "r", encoding="utf-8") as file:
                 md_content = file.read()
 
-            frontmatter, _ = extract_frontmatter(md_content)
+            frontmatter, content_without_frontmatter = extract_frontmatter(md_content)
 
             # Get title from frontmatter or filename
             title = frontmatter.get(
                 "title", os.path.basename(md_file).replace(".md", "")
+            )
+
+            # Convert markdown content to HTML for post_list
+            html_content = markdown.markdown(
+                content_without_frontmatter, extensions=["fenced_code", "tables", "nl2br"]
             )
 
             # Get date components from frontmatter
@@ -395,7 +400,7 @@ def build():
             content_dir = os.path.dirname(md_file)
             copy_content_assets(content_dir, html_dir)
 
-            # Add to post list with the new URL format
+            # Add to post list with the new URL format and HTML content
             post_url = f"/{year}/{month}/{day}/{slug}/"
 
             post_list.append(
@@ -406,6 +411,7 @@ def build():
                         "pub_date", datetime.datetime.now().strftime("%Y-%m-%d")
                     ),
                     "description": frontmatter.get("description", ""),
+                    "html_content": html_content,  # 마크다운을 HTML로 변환한 내용 추가
                 }
             )
 
