@@ -1,5 +1,3 @@
-import tempfile
-import os
 from zvc.cli import extract_frontmatter
 
 
@@ -18,7 +16,7 @@ tags: ['test', 'example']
 This is a test post.
 """
     frontmatter, content = extract_frontmatter(md_content)
-    
+
     assert frontmatter["title"] == "Test Post"
     assert frontmatter["author"] == "John Doe"
     assert frontmatter["pub_date"] == "2024-07-13"
@@ -38,7 +36,7 @@ pub_date: '2024-07-13'
 This is a test post without author.
 """
     frontmatter, content = extract_frontmatter(md_content)
-    
+
     assert frontmatter["title"] == "Test Post Without Author"
     assert "author" not in frontmatter
     assert "Test Content" in content
@@ -51,6 +49,6 @@ def test_extract_frontmatter_no_frontmatter():
 Regular content without frontmatter.
 """
     frontmatter, content = extract_frontmatter(md_content)
-    
+
     assert frontmatter == {}
     assert "Just a Title" in content

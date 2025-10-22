@@ -377,7 +377,8 @@ def build():
 
             # Convert markdown content to HTML for post_list
             html_content = markdown.markdown(
-                content_without_frontmatter, extensions=["fenced_code", "tables", "nl2br"]
+                content_without_frontmatter,
+                extensions=["fenced_code", "tables", "nl2br"],
             )
 
             # Get date components from frontmatter
