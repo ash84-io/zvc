@@ -109,6 +109,7 @@ def convert_markdown_to_html(
         "featured_image": frontmatter.get("featured_image", ""),
         "path": url_path,
         "description": frontmatter.get("description", ""),
+        "author": frontmatter.get("author", ""),
     }
 
     # Get tags if available
@@ -412,6 +413,7 @@ def build():
                     ),
                     "description": frontmatter.get("description", ""),
                     "html_content": html_content,  # 마크다운을 HTML로 변환한 내용 추가
+                    "author": frontmatter.get("author", ""),
                 }
             )
 

@@ -9,7 +9,12 @@
 <body>
     <header>
         <h1>{{ post.title }}</h1>
-        <div class="post-meta">{{ post.created_at }}</div>
+        <div class="post-meta">
+            {{ post.created_at }}
+            {% if post.author %}
+            <span class="author"> · by {{ post.author }}</span>
+            {% endif %}
+        </div>
         {% if tag_list %}
         <div class="tags">
             {% for tag in tag_list %}

@@ -16,7 +16,12 @@
             {% for post in post_list %}
             <article class="post-item">
                 <h2><a href="{{ post.link }}">{{ post.title }}</a></h2>
-                <div class="post-meta">{{ post.pub_date }}</div>
+                <div class="post-meta">
+                    {{ post.pub_date }}
+                    {% if post.author %}
+                    <span class="author"> · by {{ post.author }}</span>
+                    {% endif %}
+                </div>
                 <div class="post-description">{{ post.description }}</div>
             </article>
             {% endfor %}

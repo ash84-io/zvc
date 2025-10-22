@@ -73,3 +73,35 @@ Build complete!
 ```
 
 ![example](https://github.com/ash84-io/zvc/raw/main/example.png)
+
+# Markdown Frontmatter
+
+zvc supports frontmatter in markdown files. You can add metadata at the top of your markdown files using YAML format.
+
+## Supported Fields
+
+- `title`: Post title
+- `author`: Post author (optional)
+- `pub_date`: Publication date (YYYY-MM-DD format)
+- `description`: Post description
+- `featured_image`: URL to featured image
+- `tags`: List of tags
+
+## Example
+
+```markdown
+---
+title: 'My First Post'
+author: 'John Doe'
+pub_date: '2024-07-13'
+description: 'This is my first blog post'
+featured_image: ''
+tags: ['blog', 'tutorial']
+---
+
+# Your Content Here
+
+Write your blog post content below the frontmatter.
+```
+
+The `author` field will be displayed in both the post page and the index page alongside the publication date.
