@@ -82,6 +82,7 @@ zvc supports frontmatter in markdown files. You can add metadata at the top of y
 
 - `title`: Post title
 - `author`: Post author (optional)
+- `status`: Post status - `draft` or `published` (default: `published`). Draft posts are excluded from build output.
 - `pub_date`: Publication date (YYYY-MM-DD format)
 - `description`: Post description
 - `featured_image`: URL to featured image
@@ -93,6 +94,7 @@ zvc supports frontmatter in markdown files. You can add metadata at the top of y
 ---
 title: 'My First Post'
 author: 'John Doe'
+status: 'published'
 pub_date: '2024-07-13'
 description: 'This is my first blog post'
 featured_image: ''
@@ -105,3 +107,5 @@ Write your blog post content below the frontmatter.
 ```
 
 The `author` field will be displayed in both the post page and the index page alongside the publication date.
+
+Setting `status: 'draft'` will exclude the post from the build output. If not specified, the default is `published`.
