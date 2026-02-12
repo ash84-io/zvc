@@ -42,6 +42,37 @@ This is a test post without author.
     assert "Test Content" in content
 
 
+def test_extract_frontmatter_status_draft():
+    """Test that extract_frontmatter correctly extracts status field."""
+    md_content = """---
+title: 'Draft Post'
+pub_date: '2024-07-13'
+status: 'draft'
+---
+
+# Draft Content
+"""
+    frontmatter, content = extract_frontmatter(md_content)
+
+    assert frontmatter["status"] == "draft"
+    assert frontmatter["title"] == "Draft Post"
+
+
+def test_extract_frontmatter_status_published():
+    """Test that status defaults to published when not present."""
+    md_content = """---
+title: 'Published Post'
+pub_date: '2024-07-13'
+---
+
+# Published Content
+"""
+    frontmatter, content = extract_frontmatter(md_content)
+
+    assert "status" not in frontmatter
+    assert frontmatter.get("status", "published") == "published"
+
+
 def test_extract_frontmatter_no_frontmatter():
     """Test that extract_frontmatter handles content without frontmatter."""
     md_content = """# Just a Title

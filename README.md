@@ -3,7 +3,7 @@
 
 
 [![Lint](https://github.com/ash84-io/zvc/actions/workflows/lint.yml/badge.svg)](https://github.com/ash84-io/zvc/actions/workflows/lint.yml)
-[![Version](https://img.shields.io/badge/version-0.1.7-blue.svg)](https://github.com/ash84/zvc)
+[![Version](https://img.shields.io/badge/version-0.1.8-blue.svg)](https://github.com/ash84/zvc)
 
 ---
 

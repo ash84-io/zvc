@@ -1,6 +1,7 @@
 ---
 title: 'First post for zvc'
 author: 'writer'
+status: 'published'
 pub_date: '2024-07-13'
 description: 'first post for zvc'
 featured_image: ''

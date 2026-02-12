@@ -370,6 +370,12 @@ def build():
 
             frontmatter, content_without_frontmatter = extract_frontmatter(md_content)
 
+            # Skip draft posts
+            status = frontmatter.get("status", "published")
+            if status == "draft":
+                progress.update(task, advance=1)
+                continue
+
             # Get title from frontmatter or filename
             title = frontmatter.get(
                 "title", os.path.basename(md_file).replace(".md", "")

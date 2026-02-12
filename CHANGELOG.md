@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.8] - 2026-02-12
+
+### Added
+- Post status field support (`draft` | `published`) in markdown frontmatter
+- Draft posts are excluded from build output
+- Default status is `published` when not specified
+
+### Tests
+- Added `test_extract_frontmatter_status_draft` - validates draft status extraction
+- Added `test_extract_frontmatter_status_published` - validates default published status
+
 ## [0.1.7] - 2025-10-22
 
 ### Added
